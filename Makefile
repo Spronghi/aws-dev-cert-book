@@ -1,3 +1,3 @@
 serve:
-	mdbook serve --dest-dir=docs
+	mdbook serve -d docs
 

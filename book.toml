@@ -4,4 +4,7 @@ language = "en"
 multilingual = false
 src = "src"
 title = "AWS Developer Certification"
-default-theme = "ayu"
+
+[output.html]
+additional-css = ["custom.css"]
+
