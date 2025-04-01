@@ -1,3 +1,3 @@
 serve:
-	mdbook serve --open
+	mdbook serve --dest-dir=docs
 
