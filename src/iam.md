@@ -43,6 +43,12 @@ Allow you to group users applying `Policies`.
 
 Create roles and then assign them to `Users`, `Applications` or `Services` to grant them permission to access AWS resources.
 
+## IAM Policy Simulator
+
+It allows you to test IAM policies before pushing them to production.
+
+Validate if the current policies work as expected - great for troubleshooting.
+
 ## Questions
 
 > Which IAM entity can you use to delegate access to other trusted entities such as IAM users, applications, or AWS services like EC2?
