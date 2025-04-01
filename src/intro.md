@@ -1,6 +1,6 @@
 # Introduction
 
-Just some notes for the [AWS Certified Developer - Associate](https://aws.amazon.com/certification/certified-developer-associate/) certification I am studying for.
+Just some notes for the [AWS Certified Developer - Associate](https://aws.amazon.com/certification/certified-developer-associate/).
 
 ## Resources
 
