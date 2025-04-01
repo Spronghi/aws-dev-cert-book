@@ -1,6 +1,8 @@
 # AWS Certification notes
 
-There are just some notes regarding the AWS certification I am studying for.
+[Book](https://spronghi.github.io/aws-dev-cert-book/)
+
+Just some notes regarding the AWS certification I am studying for.
 
 ## Tool
 
