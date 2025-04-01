@@ -3,8 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>AWS Developer Certification</title>
-        <meta name="robots" content="noindex">
+        <title>EBS - AWS Developer Certification</title>
 
 
         <!-- Custom HTML head -->
@@ -153,85 +152,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
-<p><a href="https://learn.acloud.guru/course/aws-certified-developer-associate/dashboard">Cloud Guru</a></p>
-<p><a href="https://awsicons.dev/">AWS Icons</a></p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="identity-access-manager"><a class="header" href="#identity-access-manager">Identity Access Manager</a></h1>
-<p><svg style="width:40px" viewBox="-117 0 490 490" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M21,165.75 L0,172.606 L21.75,175.125 L21,165.75" fill="#3C4929"> </path> <path d="M19.955,206.806 L128,213.714 L236.045,206.806 L128,185.75 L19.955,206.806" fill="#3C4929"> </path> <path d="M234.5,175.125 L256,172.606 L234.5,166.875 L234.5,175.125" fill="#3C4929"> </path> <path d="M157.387,352.929 L213.993,366.325 L157.237,383.441 L157.387,352.929" fill="#B7CA9D"> </path> <path d="M19.955,92.221 L19.955,54.019 L128,0 L128.482,0.405 L128.234,48.901 L128,49.003 L127.595,50.12 L68.497,73.976 L67.955,158.013 L99.407,152.723 L128,147.002 L128,490.03 L95.631,473.853 L95.631,428.082 L67.277,416.744 L67.277,202.069 L19.955,206.806 L19.955,168.611 L0,172.606 L0,100.198 L19.955,92.221" fill="#4B612C"> </path> <path d="M99.408,152.727 L67.277,159.151 L67.277,73.28 L99.408,83.298 L99.408,152.727" fill="#759C3E"> </path> <path d="M183.925,27.959 L236.031,54.019 L236.031,92.221 L256,100.198 L256,172.6 L236.031,168.611 L236.031,206.806 L210.59,204.268 L188.709,202.069 L188.709,245.008 L236.045,245.008 L236.045,284.292 L214.048,286.266 L214.048,325.877 L160.356,336.549 L160.356,382.319 L213.926,366.42 L214.048,406.8 L160.356,428.082 L160.356,473.853 L128,490.03 L128,147.002 L156.572,152.712 L187.155,156.75 L187.155,73.966 L128.817,51.468 L128,49.003 L128,0 L183.925,27.959" fill="#759C3E"> </path> <path d="M160.356,61.941 L128,49.01 L67.277,73.28 L99.408,83.298 L160.356,61.941" fill="#3C4929"> </path> <path d="M67.277,73.28 L128,49.01 L140.775,54.114 L160.356,61.941 L188.709,73.294 L187.194,74.835 L158.318,83.826 L156.578,83.298 L128,73.28 L99.408,83.298 L67.277,73.28" fill="#3C4929"> </path> <path d="M156.578,83.298 L188.709,73.294 L188.709,159.158 L156.578,152.712 L156.578,83.298" fill="#4B612C"> </path> </g> </g></svg></p>
-<p>It consists of applying <code>Policies</code> to <code>Users</code>, <code>Groups</code> and <code>Roles</code>. IAM is <em>universal</em>, not <em>regional</em>.</p>
-<p>The root account is created whe you first create the AWS account. It has admin access to the entire account, so it's a good practice to create a different IAM user for day to day activities. Remember to alwasy setup <code>MFA</code> to your root account. From here you can setup a rotaion period for the password on your own account.</p>
-<h2 id="policies"><a class="header" href="#policies">Policies</a></h2>
-<p>A JSON document which defines one or more permissions.</p>
-<p>Policies are the rules that will determine if someone can access a given resource.</p>
-<pre><code class="language-json">{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": "*",
-      "Resource": "*"
-    }
-  ]
-}
-</code></pre>
-<h2 id="users"><a class="header" href="#users">Users</a></h2>
-<p>End users of AWS. New <code>Users</code> have no permissions by default. You need to assign them roles in order to be able to access resources</p>
-<h3 id="access-keys"><a class="header" href="#access-keys">Access Keys</a></h3>
-<p>New users are assigned a <code>access key ID</code> and <code>secret access key</code> when their account is created. You can access them only while creating the account, if you want to see them again, you must regenerate them.</p>
-<p>These keys are not the same of <em>username</em> and <em>password</em>, you can't use them to access the user, you can use them only to access the <em>AWS APIs</em> and <em>command line</em>.</p>
-<h2 id="groups"><a class="header" href="#groups">Groups</a></h2>
-<p>Allow you to group users applying <code>Policies</code>.</p>
-<h2 id="roles"><a class="header" href="#roles">Roles</a></h2>
-<p>Create roles and then assign them to <code>Users</code>, <code>Applications</code> or <code>Services</code> to grant them permission to access AWS resources.</p>
-<h2 id="questions"><a class="header" href="#questions">Questions</a></h2>
-<blockquote>
-<p>Which IAM entity can you use to delegate access to other trusted entities such as IAM users, applications, or AWS services like EC2?</p>
-<ul>
-<li><input disabled="" type="checkbox"/>
-IAM Web Identity Federation</li>
-<li><input disabled="" type="checkbox" checked=""/>
-IAM Role</li>
-<li><input disabled="" type="checkbox"/>
-IAM Group</li>
-<li><input disabled="" type="checkbox"/>
-IAM User</li>
-</ul>
-<p>You can use IAM roles to delegate access to IAM users managed within your account, to IAM users under a different AWS account, to a web service offered by AWS such as Amazon Elastic Compute Cloud (Amazon EC2), or to an external user authenticated by an external identity provider (IdP) service that is compatible with SAML 2.0 or OpenID Connect, or a custom-built identity broker. IAM Roles.</p>
-</blockquote>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="iam-policy-simulator"><a class="header" href="#iam-policy-simulator">IAM Policy Simulator</a></h1>
-<p>It allows you to test IAM policies before pushing them to production.</p>
-<p>Validate if the current policies work as expected - great for troubleshooting.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="elastic-compute-cloud"><a class="header" href="#elastic-compute-cloud">Elastic Compute Cloud</a></h1>
-<p><svg class="w-6 h-6" height="40" width="40" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="Arch_Amazon-EC2_32_svg__a"><stop stop-color="#C8511B" offset="0%"></stop><stop stop-color="#F90" offset="100%"></stop></linearGradient></defs><g fill="none" fill-rule="evenodd"><path d="M0 0h40v40H0z" fill="url(#Arch_Amazon-EC2_32_svg__a)"></path><path d="M26.052 27L26 13.948 13 14v13.052L26.052 27zM27 14h2v1h-2v2h2v1h-2v2h2v1h-2v2h2v1h-2v2h2v1h-2v.052a.95.95 0 01-.948.948H26v2h-1v-2h-2v2h-1v-2h-2v2h-1v-2h-2v2h-1v-2h-2v2h-1v-2h-.052a.95.95 0 01-.948-.948V27h-2v-1h2v-2h-2v-1h2v-2h-2v-1h2v-2h-2v-1h2v-2h-2v-1h2v-.052a.95.95 0 01.948-.948H13v-2h1v2h2v-2h1v2h2v-2h1v2h2v-2h1v2h2v-2h1v2h.052a.95.95 0 01.948.948V14zm-6 19H7V19h2v-1H7.062C6.477 18 6 18.477 6 19.062v13.876C6 33.523 6.477 34 7.062 34h13.877c.585 0 1.061-.477 1.061-1.062V31h-1v2zM34 7.062v13.876c0 .585-.476 1.062-1.061 1.062H30v-1h3V7H19v3h-1V7.062C18 6.477 18.477 6 19.062 6h13.877C33.524 6 34 6.477 34 7.062z" fill="#FFF"></path></g></svg></p>
-<p>Secure, resizable compute capacity in the Cloud. Is like a <code>VM</code> that is hosted on AWS instead of your own data center.</p>
-<h2 id="pricing-options"><a class="header" href="#pricing-options">Pricing Options</a></h2>
-<ul>
-<li><strong>On Demand</strong>: pay only for the time you are running;</li>
-<li><strong>Reserved</strong>: reserve capacity for one or three years. Up to 72% discount;</li>
-<li><strong>Spot</strong>: purchase unused capacity at a massive discount. You decide a price for each instance based on the demand, and when it goes higher the instance get killed;</li>
-<li><strong>Dedicated</strong>: phisical server running EC2 instances only for you. The most expensive options.</li>
-</ul>
-<h3 id="on-deman"><a class="header" href="#on-deman">On Deman</a></h3>
-<p>Super flexible, perfect for first time in the cloud or normal applications.</p>
-<h3 id="reserved-instances"><a class="header" href="#reserved-instances">Reserved Instances</a></h3>
-<p>There are three types of reservations:</p>
-<ol>
-<li><strong>Standard RIs</strong>: up to 72% off on-demand price. You cannot change to larger or smaller instances types;</li>
-<li><strong>Convertible RIs</strong>: up to 54% off on-demand price. You can decide to change the instances type of equal or greater value;</li>
-<li><strong>Scheduled RIs</strong>: schedule the reservations between a window of time of the day, week or month.</li>
-</ol>
-<h3 id="spot-instances"><a class="header" href="#spot-instances">Spot Instances</a></h3>
-<p>This are perfect for application that need to have a very <code>low compute prices</code> or applications that need a <code>large amount</code> of additional computing capacity.</p>
-<h3 id="dedicated"><a class="header" href="#dedicated">Dedicated</a></h3>
-<p>Great for meeting regolatory requirements that do not support multi-tenant virtualization.</p>
-<ol>
-<li><strong>On-Demand</strong>: can be purchase on a hourly rate;</li>
-<li><strong>Reserved</strong>: can be purchase at a reservation to up to 72% off the on-demand price.</li>
-</ol>
-<h2 id="instance-types"><a class="header" href="#instance-types">Instance Types</a></h2>
-<p>Determinates the hardware of the host computer. Each instance type offers different compute memory, and storage capabilities.</p>
-<p>There is a wide selection of instance types, based on the requirements of the application and hardware needed.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="elastic-block-store"><a class="header" href="#elastic-block-store">Elastic Block Store</a></h1>
+                        <h1 id="elastic-block-store"><a class="header" href="#elastic-block-store">Elastic Block Store</a></h1>
 <p><svg style="width:40px" xmlns="http://www.w3.org/2000/svg" height="40" width="40" viewBox="0 0 80 80"><linearGradient id="a" x1="0%" y1="100%" y2="0%"><stop offset="0" stop-color="#1b660f"/><stop offset="1" stop-color="#6cae3e"/></linearGradient><g fill="none" fill-rule="evenodd"><path d="M0 0h80v80H0z" fill="url(#a)"/><path d="M66 58h2v10H58v-2h6.586l-8.293-8.293 1.414-1.414L66 64.586zm-42.293-.293L15.414 66H22v2H12V58h2v6.586l8.293-8.293zM68 12v10h-2v-6.586l-8.293 8.293-1.414-1.414L64.586 14H58v-2zm-52.586 2l8.293 8.293-1.414 1.414L14 15.414V22h-2V12h10v2zm35.264 39.661c-1.157 1.187-5.043 2.385-11.115 2.385C32.168 56.046 28.031 54.23 28 53V29.857C30.603 31.395 35.32 32 39.563 32c4.193 0 8.855-.603 11.437-2.133v23.158c.002.074.008.298-.322.636zM39.563 24c6.1 0 9.982 1.181 11.123 2.352.322.33.316.55.314.623V27c0 1.226-4.073 3-11.437 3-7.141 0-11.531-1.735-11.56-2.987.058-1.267 4.09-3.013 11.56-3.013zm13.436 3c.008-.518-.141-1.284-.881-2.044C50.313 23.105 45.62 22 39.563 22 33.365 22 26.094 23.303 26 27v26.025c.095 3.706 7.365 5.021 13.563 5.021 4.657 0 10.399-.785 12.547-2.989.759-.779.903-1.562.89-2.057V27z" fill="#fff"/></g></svg></p>
 <p><code>Highly available</code> and <code>scalable</code> storage volumes you can attach to EC2 instances.</p>
 <ul>
@@ -284,6 +205,9 @@ IAM User</li>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="ec2.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
 
 
                         <div style="clear: both"></div>
@@ -292,6 +216,9 @@ IAM User</li>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="ec2.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
 
             </nav>
 
@@ -331,11 +258,6 @@ IAM User</li>
 
         <!-- Custom JS scripts -->
 
-        <script>
-        window.addEventListener('load', function() {
-            window.setTimeout(window.print, 100);
-        });
-        </script>
 
     </div>
     </body>
