@@ -11,7 +11,7 @@ class AwsIconElement extends HTMLElement {
 
     const img = document.createElement("img");
 
-    img.setAttribute("src", `aws-icons/${iconAttribute}.svg`);
+    img.setAttribute("src", `images/aws-icons/${iconAttribute}.svg`);
     img.style.width = "6rem";
 
     if (hrefAttribute) {

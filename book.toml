@@ -4,6 +4,7 @@ language = "en"
 multilingual = false
 src = "src"
 title = "AWS Developer Certification Notes"
+description = "A note book about the AWS Developer Certification."
 
 [build]
 build-dir = "docs"
