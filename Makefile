@@ -1,3 +1,5 @@
 serve:
-	mdbook serve -d docs
+	mdbook serve
+build:
+	mdbook build
 

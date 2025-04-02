@@ -4,7 +4,7 @@
 
 # Services
 
-- [IAM](./iam.md)
-- [EC2](./ec2.md)
-- [EBS](./ebs.md)
-- [ELB](./elb.md)
+- [Identity Access Manager (IAM)](./iam.md)
+- [Elastic Compute Cloud (EC2)](./ec2.md)
+- [Elastic Block Store (EBS)](./ebs.md)
+- [Elastic Load Balancer (ELB)](./elb.md)
