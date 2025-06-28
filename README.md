@@ -19,4 +19,4 @@ For this book I made a web component you can use to fetch AWS icons:
 ></aws-icon>
 ```
 
-Icon list in [aws-icons/](./src/aws-icons/)
+Icon list in [aws-icons/](./src/aws-icons/).
