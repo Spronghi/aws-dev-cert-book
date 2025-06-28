@@ -25,29 +25,41 @@
         <link rel="stylesheet" href="fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="css/styles.css">
 
 
-        <!-- Provide site root to javascript -->
+        <!-- Provide site root and default themes to javascript -->
         <script>
-            var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "dark";
+            const path_to_root = "";
+            const default_light_theme = "dark";
+            const default_dark_theme = "ayu";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc.js"></script>
     </head>
     <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
     <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
-                var theme = localStorage.getItem('mdbook-theme');
-                var sidebar = localStorage.getItem('mdbook-sidebar');
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
 
                 if (theme.startsWith('"') && theme.endsWith('"')) {
                     localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
@@ -61,7 +73,8 @@
 
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script>
-            var theme;
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             const html = document.documentElement;
@@ -74,8 +87,8 @@
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var sidebar = null;
-            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
@@ -111,13 +124,14 @@
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
@@ -307,7 +321,59 @@ IAM User</li>
 <p><code>To third-party visual appliencies running in AWS</code></p>
 <h2 id="7-layer-model"><a class="header" href="#7-layer-model">7 Layer Model</a></h2>
 <p>A conceptual framework which describes the function of a network.</p>
-
+<div style="break-before: page; page-break-before: always;"></div><h1 id="simple-storage-service"><a class="header" href="#simple-storage-service">Simple Storage Service</a></h1>
+<p><aws-icon icon="s3"></aws-icon></p>
+<p>S3 is an <code>Object-Based Storage</code>. Store data as objects rather then in file systems or data block.</p>
+<h2 id="basics"><a class="header" href="#basics">Basics</a></h2>
+<ul>
+<li>The total number of objects and the number of data is unlimited</li>
+<li>S3 objects can be from 0 bytes up to 5 terabytes</li>
+<li>Store files in <code>Buckets</code> (similar to folders)</li>
+</ul>
+<p>All AWS accounts share the same namespace and each S3 bucket must be globally unique (<code>https://&lt;bucket-name&gt;.s3.&lt;region&gt;.amazonaws.com/&lt;key-name&gt;</code>).</p>
+<p>S3 is a <code>key-value</code> store, and it stores a key, value, version ID and metadata (e.g. content-type, last-modified, team-name, etc..).</p>
+<h2 id="availability"><a class="header" href="#availability">Availability</a></h2>
+<p>S3 is an highly available (99.95% - 99.99% depending on the S3 tier) and highly durable (11 9's durability) service.</p>
+<h2 id="secure-your-data"><a class="header" href="#secure-your-data">Secure your data</a></h2>
+<p>You can enable server side encryption on the buckets.</p>
+<p>You can protect the access using <code>Access Control Lists (ACLs)</code> to define which AWS account can access given results.</p>
+<p>You can define <code>Bucket Policies</code> to define which actions a user can take on the buckets.</p>
+<h2 id="exam-tips"><a class="header" href="#exam-tips">Exam Tips</a></h2>
+<ul>
+<li>S3 is a <code>Object-Based</code> storage that allows you to upload files</li>
+<li>Not OS or run a DB storage</li>
+<li>Files from 0 bytes up to <code>5TB</code></li>
+<li>The total value of data and number of objects you can store is <code>unlimited</code></li>
+<li>Files are stored in buckets</li>
+<li>S3 is a global namespace, this means that the buckets must be globally available</li>
+<li>A S3 Object consists in <code>Value</code>, <code>Key</code>, <code>Version ID</code> and <code>Metadata</code></li>
+</ul>
+<h1 id="tiers"><a class="header" href="#tiers">Tiers</a></h1>
+<h2 id="s3-standard"><a class="header" href="#s3-standard">S3 Standard</a></h2>
+<p>Is a highly available and highly durable storage. Designed for <code>frequent access</code> and suitable for <code>most workloads</code>.</p>
+<p>It's stored in at least <code>3 different Availability Zone</code>.</p>
+<h2 id="s3-standard-infrequent-access-s3-ia"><a class="header" href="#s3-standard-infrequent-access-s3-ia">S3 Standard-Infrequent Access (S3-IA)</a></h2>
+<p>Designed for infrequently access data, so data that you may access a few times a month, but not on a daily bases.</p>
+<p>Great for long term storage, backups and disaster recovery files.</p>
+<p>It provides <code>Rapid Access</code>, you <code>pay to access the data</code> (low per-GB storage price and a per-GB retrieval fee).</p>
+<p>It's stored in at least <code>3 different Availability Zone</code>.</p>
+<h2 id="s3-one-zone-infrequent-access-s3-ia"><a class="header" href="#s3-one-zone-infrequent-access-s3-ia">S3 One Zone-Infrequent Access (S3-IA)</a></h2>
+<p>Same as the S3-IA but it's available only in one AZ, but costs <code>20% less</code> then a regular S3-IA.</p>
+<h2 id="glacier-and-glacier-deep-archive"><a class="header" href="#glacier-and-glacier-deep-archive">Glacier and Glacier Deep Archive</a></h2>
+<p>There are 2 Glacier Options: <code>Glacier</code> and <code>Glacier Deep Archive</code>.</p>
+<p>They are both very cheap and designed for data that needs to be accessed once per year, so good for <code>archiving data</code>.</p>
+<p>To access data from the normal one it can take from <code>1 minute</code> to <code>12 hours</code>, while for the second has a <code>default</code> retrieval time of <code>12 hours</code>.</p>
+<h2 id="s3---intelligent-tiering"><a class="header" href="#s3---intelligent-tiering">S3 - Intelligent Tiering</a></h2>
+<p>Automatically moves you data on the most cost-effective tier based on how often you access the data.</p>
+<h2 id="exam-tips-1"><a class="header" href="#exam-tips-1">Exam Tips</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Storage Class</th><th>AZ</th><th>Use Case</th></tr></thead><tbody>
+<tr><td>S3 Standard</td><td>3</td><td>Suitable for <code>most workloads</code>, e.g. websites, content distribution, mobile and gaming applications, and big data analytics.</td></tr>
+<tr><td>S3 Standard-Infrequent Access</td><td>3</td><td>Long-term, <code>infrequently accessed critical data</code>, e.g. backups, data store for disaster recovery files, etc. Min storage duration: <code>30 days</code>.</td></tr>
+<tr><td>S3 One Zone-Infrequent Access</td><td><code>1</code></td><td>Long-term, <code>infrequently accessed non-critical data</code>. Min storage duration: <code>30 days</code>.</td></tr>
+<tr><td>S3 Glacier</td><td>&gt;= 3</td><td>Long-term data <code>archiving</code> that <code>occasionally</code> needs to be accessed withing a few <code>hours or minutes</code>. Min storage duration: <code>90 days</code>.</td></tr>
+<tr><td>S3 Glacier Deep Archive</td><td>&gt;= 3</td><td><code>Rarely accessed data archiving</code> with a default retrieval time of <code>12 hours</code>. Min storage duration: <code>180 days</code>.</td></tr>
+</tbody></table>
+</div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
