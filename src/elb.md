@@ -1,6 +1,6 @@
 # Elastic Load Balancer
 
-<aws-icon icon="elb"></aws-icon>
+<aws-icon icon="elasticloadbalancing"></aws-icon>
 
 A load balancer distributes network traffic across a group of servers.
 

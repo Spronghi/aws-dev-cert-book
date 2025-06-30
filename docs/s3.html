@@ -187,45 +187,41 @@
 <h2 id="availability"><a class="header" href="#availability">Availability</a></h2>
 <p>S3 is an highly available (99.95% - 99.99% depending on the S3 tier) and highly durable (11 9's durability) service.</p>
 <h2 id="secure-your-data"><a class="header" href="#secure-your-data">Secure your data</a></h2>
+<p>By default every bucket is private (no public access by default). So by default only the owner can read, delete and update files into a bucket.</p>
 <p>You can enable server side encryption on the buckets.</p>
-<p>You can protect the access using <code>Access Control Lists (ACLs)</code> to define which AWS account can access given results.</p>
 <p>You can define <code>Bucket Policies</code> to define which actions a user can take on the buckets.</p>
-<h2 id="exam-tips"><a class="header" href="#exam-tips">Exam Tips</a></h2>
+<p>You can protect the access using <code>Access Control Lists (ACLs)</code> to define which AWS account can access each resource.</p>
+<h3 id="encryption-exams-tips"><a class="header" href="#encryption-exams-tips">Encryption Exams Tips</a></h3>
 <ul>
-<li>S3 is a <code>Object-Based</code> storage that allows you to upload files</li>
-<li>Not OS or run a DB storage</li>
-<li>Files from 0 bytes up to <code>5TB</code></li>
-<li>The total value of data and number of objects you can store is <code>unlimited</code></li>
-<li>Files are stored in buckets</li>
-<li>S3 is a global namespace, this means that the buckets must be globally available</li>
-<li>A S3 Object consists in <code>Value</code>, <code>Key</code>, <code>Version ID</code> and <code>Metadata</code></li>
+<li>Encryption <code>in Transit</code>: it can use encryption in transit with SSL/TSL or HTTPS</li>
+<li>Encryption <code>at Rest (server side encryption SSE)</code>
+<ul>
+<li><code>SSE-S3</code>: enabled by default, the keys are provided and managed by AWS</li>
+<li><code>SSE-KMS</code>: the keys are provided by AWS and managed by you</li>
+<li><code>SSE-C</code>: the keys are provided and managed by you</li>
 </ul>
-<h1 id="tiers"><a class="header" href="#tiers">Tiers</a></h1>
-<h2 id="s3-standard"><a class="header" href="#s3-standard">S3 Standard</a></h2>
+</li>
+<li><code>Client Side Encryption</code> is when you encrypt the file by yourself before uploading it</li>
+<li><code>CORS</code> resource sharing can be allowed to enable a bucket to access resources that are allocated to another S3 bucket</li>
+</ul>
+<h2 id="tiers"><a class="header" href="#tiers">Tiers</a></h2>
+<h3 id="s3-standard"><a class="header" href="#s3-standard">S3 Standard</a></h3>
 <p>Is a highly available and highly durable storage. Designed for <code>frequent access</code> and suitable for <code>most workloads</code>.</p>
 <p>It's stored in at least <code>3 different Availability Zone</code>.</p>
-<h2 id="s3-standard-infrequent-access-s3-ia"><a class="header" href="#s3-standard-infrequent-access-s3-ia">S3 Standard-Infrequent Access (S3-IA)</a></h2>
+<h3 id="s3-standard-infrequent-access-s3-ia"><a class="header" href="#s3-standard-infrequent-access-s3-ia">S3 Standard-Infrequent Access (S3-IA)</a></h3>
 <p>Designed for infrequently access data, so data that you may access a few times a month, but not on a daily bases.</p>
 <p>Great for long term storage, backups and disaster recovery files.</p>
 <p>It provides <code>Rapid Access</code>, you <code>pay to access the data</code> (low per-GB storage price and a per-GB retrieval fee).</p>
 <p>It's stored in at least <code>3 different Availability Zone</code>.</p>
-<h2 id="s3-one-zone-infrequent-access-s3-ia"><a class="header" href="#s3-one-zone-infrequent-access-s3-ia">S3 One Zone-Infrequent Access (S3-IA)</a></h2>
+<h3 id="s3-one-zone-infrequent-access-s3-ia"><a class="header" href="#s3-one-zone-infrequent-access-s3-ia">S3 One Zone-Infrequent Access (S3-IA)</a></h3>
 <p>Same as the S3-IA but it's available only in one AZ, but costs <code>20% less</code> then a regular S3-IA.</p>
-<h2 id="glacier-and-glacier-deep-archive"><a class="header" href="#glacier-and-glacier-deep-archive">Glacier and Glacier Deep Archive</a></h2>
+<h3 id="glacier-and-glacier-deep-archive"><a class="header" href="#glacier-and-glacier-deep-archive">Glacier and Glacier Deep Archive</a></h3>
 <p>There are 2 Glacier Options: <code>Glacier</code> and <code>Glacier Deep Archive</code>.</p>
 <p>They are both very cheap and designed for data that needs to be accessed once per year, so good for <code>archiving data</code>.</p>
 <p>To access data from the normal one it can take from <code>1 minute</code> to <code>12 hours</code>, while for the second has a <code>default</code> retrieval time of <code>12 hours</code>.</p>
-<h2 id="s3---intelligent-tiering"><a class="header" href="#s3---intelligent-tiering">S3 - Intelligent Tiering</a></h2>
+<h3 id="s3---intelligent-tiering"><a class="header" href="#s3---intelligent-tiering">S3 - Intelligent Tiering</a></h3>
 <p>Automatically moves you data on the most cost-effective tier based on how often you access the data.</p>
-<h2 id="exam-tips-1"><a class="header" href="#exam-tips-1">Exam Tips</a></h2>
-<div class="table-wrapper"><table><thead><tr><th>Storage Class</th><th>AZ</th><th>Use Case</th></tr></thead><tbody>
-<tr><td>S3 Standard</td><td>3</td><td>Suitable for <code>most workloads</code>, e.g. websites, content distribution, mobile and gaming applications, and big data analytics.</td></tr>
-<tr><td>S3 Standard-Infrequent Access</td><td>3</td><td>Long-term, <code>infrequently accessed critical data</code>, e.g. backups, data store for disaster recovery files, etc. Min storage duration: <code>30 days</code>.</td></tr>
-<tr><td>S3 One Zone-Infrequent Access</td><td><code>1</code></td><td>Long-term, <code>infrequently accessed non-critical data</code>. Min storage duration: <code>30 days</code>.</td></tr>
-<tr><td>S3 Glacier</td><td>&gt;= 3</td><td>Long-term data <code>archiving</code> that <code>occasionally</code> needs to be accessed withing a few <code>hours or minutes</code>. Min storage duration: <code>90 days</code>.</td></tr>
-<tr><td>S3 Glacier Deep Archive</td><td>&gt;= 3</td><td><code>Rarely accessed data archiving</code> with a default retrieval time of <code>12 hours</code>. Min storage duration: <code>180 days</code>.</td></tr>
-</tbody></table>
-</div>
+
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
@@ -234,6 +230,9 @@
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
+                            <a rel="next prefetch" href="dev-exam-tips/s3.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -245,6 +244,9 @@
                         <i class="fa fa-angle-left"></i>
                     </a>
 
+                    <a rel="next prefetch" href="dev-exam-tips/s3.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
             </nav>
 
         </div>

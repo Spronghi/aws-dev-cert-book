@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Identity Access Manager (IAM) - AWS Developer Certification Notes</title>
+        <title>Lambda - AWS Developer Certification Notes</title>
 
 
         <!-- Custom HTML head -->
@@ -144,7 +144,7 @@
                         <a href="https://github.com/Spronghi/aws-dev-cert-book" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                        <a href="https://github.com/Spronghi/aws-dev-cert-book/edit/main/src/iam.md" title="Suggest an edit" aria-label="Suggest an edit">
+                        <a href="https://github.com/Spronghi/aws-dev-cert-book/edit/main/src/lambda.md" title="Suggest an edit" aria-label="Suggest an edit">
                             <i id="git-edit-button" class="fa fa-edit"></i>
                         </a>
 
@@ -173,61 +173,30 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="identity-access-manager"><a class="header" href="#identity-access-manager">Identity Access Manager</a></h1>
-<p><aws-icon icon="iam"></aws-icon></p>
-<p>It consists of applying <code>Policies</code> to <code>Users</code>, <code>Groups</code> and <code>Roles</code>. IAM is <em>universal</em>, not <em>regional</em>.</p>
-<p>The root account is created whe you first create the AWS account. It has admin access to the entire account, so it's a good practice to create a different IAM user for day to day activities. Remember to alwasy setup <code>MFA</code> to your root account. From here you can setup a rotaion period for the password on your own account.</p>
-<h2 id="policies"><a class="header" href="#policies">Policies</a></h2>
-<p>A JSON document which defines one or more permissions.</p>
-<p>Policies are the rules that will determine if someone can access a given resource.</p>
-<pre><code class="language-json">{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": "*",
-      "Resource": "*"
-    }
-  ]
-}
-</code></pre>
-<h2 id="users"><a class="header" href="#users">Users</a></h2>
-<p>End users of AWS. New <code>Users</code> have no permissions by default. You need to assign them roles in order to be able to access resources</p>
-<h3 id="access-keys"><a class="header" href="#access-keys">Access Keys</a></h3>
-<p>New users are assigned a <code>access key ID</code> and <code>secret access key</code> when their account is created. You can access them only while creating the account, if you want to see them again, you must regenerate them.</p>
-<p>These keys are not the same of <em>username</em> and <em>password</em>, you can't use them to access the user, you can use them only to access the <em>AWS APIs</em> and <em>command line</em>.</p>
-<h2 id="groups"><a class="header" href="#groups">Groups</a></h2>
-<p>Allow you to group users applying <code>Policies</code>.</p>
-<h2 id="roles"><a class="header" href="#roles">Roles</a></h2>
-<p>Create roles and then assign them to <code>Users</code>, <code>Applications</code> or <code>Services</code> to grant them permission to access AWS resources.</p>
-<h2 id="iam-policy-simulator"><a class="header" href="#iam-policy-simulator">IAM Policy Simulator</a></h2>
-<p>It allows you to test IAM policies before pushing them to production.</p>
-<p>Validate if the current policies work as expected - great for troubleshooting.</p>
-<h2 id="questions"><a class="header" href="#questions">Questions</a></h2>
-<blockquote>
-<p>Which IAM entity can you use to delegate access to other trusted entities such as IAM users, applications, or AWS services like EC2?</p>
-<ul>
-<li><input disabled="" type="checkbox"/>
-IAM Web Identity Federation</li>
-<li><input disabled="" type="checkbox" checked=""/>
-IAM Role</li>
-<li><input disabled="" type="checkbox"/>
-IAM Group</li>
-<li><input disabled="" type="checkbox"/>
-IAM User</li>
-</ul>
-<p>You can use IAM roles to delegate access to IAM users managed within your account, to IAM users under a different AWS account, to a web service offered by AWS such as Amazon Elastic Compute Cloud (Amazon EC2), or to an external user authenticated by an external identity provider (IdP) service that is compatible with SAML 2.0 or OpenID Connect, or a custom-built identity broker. IAM Roles.</p>
-</blockquote>
+                        <h1 id="lambda"><a class="header" href="#lambda">Lambda</a></h1>
+<p><aws-icon icon="lambda"></aws-icon></p>
+<p>Run code in AWS without provisioning any servers.</p>
+<p>You are charged based on the <code>number of requests</code>, <code>their duration</code>, and the <code>amount of memory</code> used by your Lambda.</p>
+<div class="table-wrapper"><table><thead><tr><th>Charged for</th><th>Cost</th><th>Note</th></tr></thead><tbody>
+<tr><td>Requests</td><td><code>$0.20 per month</code> per <code>1 million requests</code></td><td>The first <code>1 milion</code> requests per months are <code>for free</code></td></tr>
+<tr><td>Duration</td><td><code>$0.00001667</code> per <code>GB-second</code></td><td>The first <code>400,000 GB-seconds</code> per months are <code>for free</code></td></tr>
+</tbody></table>
+</div>
+<h2 id="versioning"><a class="header" href="#versioning">Versioning</a></h2>
+<p>You can manage multiple versions of lambda functions using aliases, and use <code>$LATEST</code> to reference the latest one.</p>
+<h2 id="concurrent-executions"><a class="header" href="#concurrent-executions">Concurrent Executions</a></h2>
+<p>There is a limit of lambdas that can run on the same time on the same region: <code>1,000 per region</code>. You can improve the limit by subitting a request to the AWS Support Center.</p>
+<p>You can also reserve some concurrent executions for some critical functions.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="intro.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="dev-exam-tips/athena.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="ec2.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="dev-exam-tips/lambda.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -237,11 +206,11 @@ IAM User</li>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="intro.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="dev-exam-tips/athena.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="ec2.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="dev-exam-tips/lambda.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

@@ -1,6 +1,6 @@
 # Identity Access Manager
 
-<aws-icon icon="iam" href="https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html"></aws-icon>
+<aws-icon icon="iam"></aws-icon>
 
 It consists of applying `Policies` to `Users`, `Groups` and `Roles`. IAM is _universal_, not _regional_.
 
