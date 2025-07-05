@@ -210,6 +210,27 @@
 <li>Lambda create <code>ENIs (Elastic Network Instance)</code> using IPs from the <code>private subnets</code></li>
 <li>The <code>security group</code> allows your function to access resources under the VPC</li>
 </ul>
+<h2 id="storage-patterns"><a class="header" href="#storage-patterns">Storage Patterns</a></h2>
+<div class="table-wrapper"><table><thead><tr><th></th><th><code>/tmp</code> Ephemeral Storage</th><th>Lambda Layer</th><th>S3 (external)</th><th>EFS (external)</th></tr></thead><tbody>
+<tr><td>Use Case:</td><td><code>Temporary</code> data</td><td><code>Libraries</code> and <code>SDKs</code></td><td><code>Persistent</code> data</td><td><code>Persistent</code> data</td></tr>
+<tr><td>Size Limit:</td><td>512 MB - 10 GB</td><td>50 MB zipped - 250 MB zipped</td><td>Elastic</td><td>Elastic</td></tr>
+<tr><td>Dynamic Updates:</td><td><code>Dynamic</code> read/write</td><td>Updates require a <code>new</code> layer</td><td><code>Store</code> and <code>retrieve</code></td><td><code>Dynamic</code> read/write</td></tr>
+<tr><td>Shared:</td><td>Shared <code>within</code> the EE</td><td>Shared <code>accross</code> EEs</td><td>Shared <code>accross</code> EEs</td><td>Shared <code>accross</code> EEs</td></tr>
+</tbody></table>
+</div>
+<p>EE = Execution Environment</p>
+<h2 id="deployment-package"><a class="header" href="#deployment-package">Deployment package</a></h2>
+<ul>
+<li>The deployment package is created by default is you use the console</li>
+<li>Deployment packages that are larger the <code>50 MB</code> in size must be zipped and <code>uploaded to S3</code></li>
+<li>You can use <code>Lambda Layer</code> is best practice to reduce the size of the deployment package</li>
+</ul>
+<h2 id="performance-tuning"><a class="header" href="#performance-tuning">Performance Tuning</a></h2>
+<ul>
+<li>Increase the memory can reduce the execution time</li>
+<li>Importing library can slow down the initialization of your function</li>
+<li>Only import what you need to use (es. import <code>aws-cdk/clients/dynamodb</code> instead of <code>aws-cdk</code>)</li>
+</ul>
 
                     </main>
 

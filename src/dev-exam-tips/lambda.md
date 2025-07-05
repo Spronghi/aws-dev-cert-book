@@ -31,3 +31,26 @@
 - In order to access a private VPC, it needs `VPC ID`, `private subnet ID`, `security group ID`
 - Lambda create `ENIs (Elastic Network Instance)` using IPs from the `private subnets`
 - The `security group` allows your function to access resources under the VPC
+
+## Storage Patterns
+
+|                  | `/tmp` Ephemeral Storage | Lambda Layer                  | S3 (external)          | EFS (external)       |
+| ---------------- | ------------------------ | ----------------------------- | ---------------------- | -------------------- |
+| Use Case:        | `Temporary` data         | `Libraries` and `SDKs`        | `Persistent` data      | `Persistent` data    |
+| Size Limit:      | 512 MB - 10 GB           | 50 MB zipped - 250 MB zipped  | Elastic                | Elastic              |
+| Dynamic Updates: | `Dynamic` read/write     | Updates require a `new` layer | `Store` and `retrieve` | `Dynamic` read/write |
+| Shared:          | Shared `within` the EE   | Shared `accross` EEs          | Shared `accross` EEs   | Shared `accross` EEs |
+
+EE = Execution Environment
+
+## Deployment package
+
+- The deployment package is created by default is you use the console
+- Deployment packages that are larger the `50 MB` in size must be zipped and `uploaded to S3`
+- You can use `Lambda Layer` is best practice to reduce the size of the deployment package
+
+## Performance Tuning
+
+- Increase the memory can reduce the execution time
+- Importing library can slow down the initialization of your function
+- Only import what you need to use (es. import `aws-cdk/clients/dynamodb` instead of `aws-cdk`)

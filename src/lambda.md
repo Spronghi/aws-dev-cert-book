@@ -20,3 +20,7 @@ You can manage multiple versions of lambda functions using aliases, and use `$LA
 There is a limit of lambdas that can run on the same time on the same region: `1,000 per region`. You can improve the limit by subitting a request to the AWS Support Center.
 
 You can also reserve some concurrent executions for some critical functions.
+
+## Execution Environment
+
+![lambda execution environment](/images/execution-env-lambda.png)

@@ -434,6 +434,8 @@ IAM User</li>
 <h2 id="concurrent-executions"><a class="header" href="#concurrent-executions">Concurrent Executions</a></h2>
 <p>There is a limit of lambdas that can run on the same time on the same region: <code>1,000 per region</code>. You can improve the limit by subitting a request to the AWS Support Center.</p>
 <p>You can also reserve some concurrent executions for some critical functions.</p>
+<h2 id="execution-environment"><a class="header" href="#execution-environment">Execution Environment</a></h2>
+<p><img src="/images/execution-env-lambda.png" alt="lambda execution environment" /></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="lambda-exam-tips-dev"><a class="header" href="#lambda-exam-tips-dev">Lambda Exam Tips (dev)</a></h1>
 <ul>
 <li><code>Lambda triggers</code>: be aware of the services that can trigger a lambda function</li>
@@ -471,6 +473,27 @@ IAM User</li>
 <li>Lambda create <code>ENIs (Elastic Network Instance)</code> using IPs from the <code>private subnets</code></li>
 <li>The <code>security group</code> allows your function to access resources under the VPC</li>
 </ul>
+<h2 id="storage-patterns"><a class="header" href="#storage-patterns">Storage Patterns</a></h2>
+<div class="table-wrapper"><table><thead><tr><th></th><th><code>/tmp</code> Ephemeral Storage</th><th>Lambda Layer</th><th>S3 (external)</th><th>EFS (external)</th></tr></thead><tbody>
+<tr><td>Use Case:</td><td><code>Temporary</code> data</td><td><code>Libraries</code> and <code>SDKs</code></td><td><code>Persistent</code> data</td><td><code>Persistent</code> data</td></tr>
+<tr><td>Size Limit:</td><td>512 MB - 10 GB</td><td>50 MB zipped - 250 MB zipped</td><td>Elastic</td><td>Elastic</td></tr>
+<tr><td>Dynamic Updates:</td><td><code>Dynamic</code> read/write</td><td>Updates require a <code>new</code> layer</td><td><code>Store</code> and <code>retrieve</code></td><td><code>Dynamic</code> read/write</td></tr>
+<tr><td>Shared:</td><td>Shared <code>within</code> the EE</td><td>Shared <code>accross</code> EEs</td><td>Shared <code>accross</code> EEs</td><td>Shared <code>accross</code> EEs</td></tr>
+</tbody></table>
+</div>
+<p>EE = Execution Environment</p>
+<h2 id="deployment-package"><a class="header" href="#deployment-package">Deployment package</a></h2>
+<ul>
+<li>The deployment package is created by default is you use the console</li>
+<li>Deployment packages that are larger the <code>50 MB</code> in size must be zipped and <code>uploaded to S3</code></li>
+<li>You can use <code>Lambda Layer</code> is best practice to reduce the size of the deployment package</li>
+</ul>
+<h2 id="performance-tuning"><a class="header" href="#performance-tuning">Performance Tuning</a></h2>
+<ul>
+<li>Increase the memory can reduce the execution time</li>
+<li>Importing library can slow down the initialization of your function</li>
+<li>Only import what you need to use (es. import <code>aws-cdk/clients/dynamodb</code> instead of <code>aws-cdk</code>)</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="api-gateway"><a class="header" href="#api-gateway">API Gateway</a></h1>
 <p><aws-icon icon="apigateway"></aws-icon></p>
 <p>It's a serverless service that allows you to publish, maintain, secure and monitor APIs at any scale. It provides a single endpoint for all client traffic interacting with the backend of your application.</p>
@@ -482,6 +505,24 @@ IAM User</li>
 <li>It's <code>serverless</code>, so it's low cost and scales automatically</li>
 <li>It supports <code>throttling</code>, so it prevents your application on being overloaded with too many requests</li>
 <li>Everything is logged into <code>CloudWatch</code>, such as API calls, latency and errors</li>
+</ul>
+<h2 id="response-and-request-transformation"><a class="header" href="#response-and-request-transformation">Response and request transformation</a></h2>
+<ul>
+<li>API Gateway can transform <code>HTTP</code> requests and responses using <code>parameter mapping</code></li>
+<li>Change the header, query string, or request path of an API <code>request</code></li>
+<li>Change the header or a status code of a API <code>response</code></li>
+</ul>
+<h2 id="caching"><a class="header" href="#caching">Caching</a></h2>
+<ul>
+<li>API Gateway improve performance by caching output of the API</li>
+<li>By default the TTL of the cache is 300 seconds (5 minutes)</li>
+<li>Reduce the number of calls you receive by serving the cache instead</li>
+</ul>
+<h2 id="throttling"><a class="header" href="#throttling">Throttling</a></h2>
+<ul>
+<li>API Gateway use throttling to prevent your backend to be overwhelmed with too many requests</li>
+<li>Default limit is <code>10,000 rps</code> and <code>5,000 concurrent requests</code></li>
+<li>If you exceed the limit, API Gateway will return <code>429, Too Many Requests</code></li>
 </ul>
 
                     </main>
