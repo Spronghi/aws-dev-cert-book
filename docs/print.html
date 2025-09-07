@@ -526,8 +526,54 @@ IAM User</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="simple-queue-service"><a class="header" href="#simple-queue-service">Simple Queue Service</a></h1>
 <p><aws-icon icon="sqs"></aws-icon></p>
+<p>It's a queue service, the oldest service of AWS.</p>
+<p>Messages can contain up to <code>256 KB</code> of text in any format.</p>
+<p>The minimum retemption period is <code>one minute</code> and the maximum is <code>14 days</code>, while the default is <code>4 days</code>.</p>
+<h2 id="standard-queue"><a class="header" href="#standard-queue">Standard queue</a></h2>
+<p>It's the default queue.</p>
+<p>It gives nearly unlimited number of transactions per second.</p>
+<p>Guarantees that the message is delivered <code>at least once</code>.</p>
+<p>Provide best-effort ordering, so delivered in the same order they are received.</p>
+<p>It may introduce <code>duplicates</code>.</p>
+<h2 id="fifo-queue"><a class="header" href="#fifo-queue">FIFO queue</a></h2>
+<p>The order in which messages are sent and received is strictly preserved.</p>
+<p>A message is delivered once and it remains available until a consumer processes it and deletes it.</p>
+<p>No <code>duplicates</code>.</p>
+<h2 id="visibility-timeout"><a class="header" href="#visibility-timeout">Visibility timeout</a></h2>
+<p>When a message is first picked up from a service, the message become invisibile for a certain amount of time (<code>Visibility Timeout</code>).</p>
+<p>The default is <code>30 seconds</code> to a maximum of 12 hours.</p>
+<p>It's preferable to use <code>long polling</code> instead of <code>short polling</code> cause the second one bills you even if the responses of the queue poll are empty, while the <code>long polling</code> doesn't.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="sqs-exam-tips-dev"><a class="header" href="#sqs-exam-tips-dev">SQS Exam Tips (dev)</a></h1>
-
+<p>Distributed message queueing system.</p>
+<p>It allows us to decouple different part of your application so they are independent.</p>
+<p>It's a <code>pull based</code> system.</p>
+<h2 id="queue-types"><a class="header" href="#queue-types">Queue types</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Standard</th><th>FIFO</th></tr></thead><tbody>
+<tr><td>Best-effort ordering.</td><td>First-in-first-out message order is strictly preserved.</td></tr>
+<tr><td>Message delivered at least once.</td><td>Messages are delivered once.</td></tr>
+<tr><td>Occasional duplicates.</td><td>No duplicates.</td></tr>
+<tr><td>The default queue type.</td><td>Good for certain scenarios where is important to deliver messages only once and in order.</td></tr>
+</tbody></table>
+</div>
+<h2 id="visibility-timeout-1"><a class="header" href="#visibility-timeout-1">Visibility Timeout</a></h2>
+<p>The default is <code>30 seconds</code> to a maximum of 12 hours.</p>
+<p>Chose <code>Long Polling</code> always against <code>Short Polling</code> cause it saves money when polling an empty queues.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="simple-notification-service-sns"><a class="header" href="#simple-notification-service-sns">Simple Notification Service (SNS)</a></h1>
+<p>Used to send notifications to devices or trigger lambdas.</p>
+<p>It uses a <code>sub/pub</code> model:</p>
+<ul>
+<li>applications can <code>PUBLISH</code> or <code>PUSH</code> messages to a <code>TOPIC</code>;</li>
+<li>subscribers can <code>RECEIVE</code> messages from a <code>TOPIC</code>.</li>
+</ul>
+<p><img src="../screenshots/dev-cert/sns-benefits.png" alt="sns benefits" /></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="sns-exam-tips-dev"><a class="header" href="#sns-exam-tips-dev">SNS Exam Tips (dev)</a></h1>
+<p>The exam will ask to pick the right tool for the job, so the main comparision will be agaisnt SQS.</p>
+<div class="table-wrapper"><table><thead><tr><th>SNS</th><th>SQS</th></tr></thead><tbody>
+<tr><td>Messaging service.</td><td>Messaging service.</td></tr>
+<tr><td>Push-based service.</td><td>Pull-based service.</td></tr>
+<tr><td>Think push notificaitons.</td><td>Think pulling messages from a queue.</td></tr>
+</tbody></table>
+</div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">

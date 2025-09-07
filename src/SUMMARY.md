@@ -20,3 +20,5 @@
   - [API Gateway Exam Tips (dev)](./dev-exam-tips/apigateway.md)
 - [Simple Queue Service (SQS)](./sqs.md)
   - [SQS Exam Tips (dev)](./dev-exam-tips/sqs.md)
+- [Simple Notification Service (SNS)](./sns.md)
+  - [SNS Exam Tips (dev)](./dev-exam-tips/sns.md)

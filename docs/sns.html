@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Simple Queue Service (SQS) - AWS Developer Certification Notes</title>
+        <title>Simple Notification Service (SNS) - AWS Developer Certification Notes</title>
 
 
         <!-- Custom HTML head -->
@@ -144,7 +144,7 @@
                         <a href="https://github.com/Spronghi/aws-dev-cert-book" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                        <a href="https://github.com/Spronghi/aws-dev-cert-book/edit/main/src/sqs.md" title="Suggest an edit" aria-label="Suggest an edit">
+                        <a href="https://github.com/Spronghi/aws-dev-cert-book/edit/main/src/sns.md" title="Suggest an edit" aria-label="Suggest an edit">
                             <i id="git-edit-button" class="fa fa-edit"></i>
                         </a>
 
@@ -173,35 +173,24 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="simple-queue-service"><a class="header" href="#simple-queue-service">Simple Queue Service</a></h1>
-<p><aws-icon icon="sqs"></aws-icon></p>
-<p>It's a queue service, the oldest service of AWS.</p>
-<p>Messages can contain up to <code>256 KB</code> of text in any format.</p>
-<p>The minimum retemption period is <code>one minute</code> and the maximum is <code>14 days</code>, while the default is <code>4 days</code>.</p>
-<h2 id="standard-queue"><a class="header" href="#standard-queue">Standard queue</a></h2>
-<p>It's the default queue.</p>
-<p>It gives nearly unlimited number of transactions per second.</p>
-<p>Guarantees that the message is delivered <code>at least once</code>.</p>
-<p>Provide best-effort ordering, so delivered in the same order they are received.</p>
-<p>It may introduce <code>duplicates</code>.</p>
-<h2 id="fifo-queue"><a class="header" href="#fifo-queue">FIFO queue</a></h2>
-<p>The order in which messages are sent and received is strictly preserved.</p>
-<p>A message is delivered once and it remains available until a consumer processes it and deletes it.</p>
-<p>No <code>duplicates</code>.</p>
-<h2 id="visibility-timeout"><a class="header" href="#visibility-timeout">Visibility timeout</a></h2>
-<p>When a message is first picked up from a service, the message become invisibile for a certain amount of time (<code>Visibility Timeout</code>).</p>
-<p>The default is <code>30 seconds</code> to a maximum of 12 hours.</p>
-<p>It's preferable to use <code>long polling</code> instead of <code>short polling</code> cause the second one bills you even if the responses of the queue poll are empty, while the <code>long polling</code> doesn't.</p>
+                        <h1 id="simple-notification-service-sns"><a class="header" href="#simple-notification-service-sns">Simple Notification Service (SNS)</a></h1>
+<p>Used to send notifications to devices or trigger lambdas.</p>
+<p>It uses a <code>sub/pub</code> model:</p>
+<ul>
+<li>applications can <code>PUBLISH</code> or <code>PUSH</code> messages to a <code>TOPIC</code>;</li>
+<li>subscribers can <code>RECEIVE</code> messages from a <code>TOPIC</code>.</li>
+</ul>
+<p><img src="../screenshots/dev-cert/sns-benefits.png" alt="sns benefits" /></p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="dev-exam-tips/apigateway.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="dev-exam-tips/sqs.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="dev-exam-tips/sqs.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="dev-exam-tips/sns.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -211,11 +200,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="dev-exam-tips/apigateway.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="dev-exam-tips/sqs.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="dev-exam-tips/sqs.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="dev-exam-tips/sns.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
