@@ -18,3 +18,5 @@
   - [Lambda Exam Tips (dev)](./dev-exam-tips/lambda.md)
 - [API Gateway](./apigateway.md)
   - [API Gateway Exam Tips (dev)](./dev-exam-tips/apigateway.md)
+- [Simple Queue Service (SQS)](./sqs.md)
+  - [SQS Exam Tips (dev)](./dev-exam-tips/sqs.md)

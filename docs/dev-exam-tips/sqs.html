@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>API Gateway Exam Tips (dev) - AWS Developer Certification Notes</title>
+        <title>SQS Exam Tips (dev) - AWS Developer Certification Notes</title>
 
 
         <!-- Custom HTML head -->
@@ -144,7 +144,7 @@
                         <a href="https://github.com/Spronghi/aws-dev-cert-book" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                        <a href="https://github.com/Spronghi/aws-dev-cert-book/edit/main/src/dev-exam-tips/apigateway.md" title="Suggest an edit" aria-label="Suggest an edit">
+                        <a href="https://github.com/Spronghi/aws-dev-cert-book/edit/main/src/dev-exam-tips/sqs.md" title="Suggest an edit" aria-label="Suggest an edit">
                             <i id="git-edit-button" class="fa fa-edit"></i>
                         </a>
 
@@ -173,43 +173,16 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="api-gateway-exam-tips-dev"><a class="header" href="#api-gateway-exam-tips-dev">API Gateway Exam Tips (dev)</a></h1>
-<ul>
-<li>It's the <code>front door</code> of your application by providing a endpoint for your application running in AWS</li>
-<li>It's <code>serverless</code>, so it's low cost and scales automatically</li>
-<li>It supports <code>throttling</code>, so it prevents your application on being overloaded with too many requests</li>
-<li>Everything is logged into <code>CloudWatch</code>, such as API calls, latency and errors</li>
-</ul>
-<h2 id="response-and-request-transformation"><a class="header" href="#response-and-request-transformation">Response and request transformation</a></h2>
-<ul>
-<li>API Gateway can transform <code>HTTP</code> requests and responses using <code>parameter mapping</code></li>
-<li>Change the header, query string, or request path of an API <code>request</code></li>
-<li>Change the header or a status code of a API <code>response</code></li>
-</ul>
-<h2 id="caching"><a class="header" href="#caching">Caching</a></h2>
-<ul>
-<li>API Gateway improve performance by caching output of the API</li>
-<li>By default the TTL of the cache is 300 seconds (5 minutes)</li>
-<li>Reduce the number of calls you receive by serving the cache instead</li>
-</ul>
-<h2 id="throttling"><a class="header" href="#throttling">Throttling</a></h2>
-<ul>
-<li>API Gateway use throttling to prevent your backend to be overwhelmed with too many requests</li>
-<li>Default limit is <code>10,000 rps</code> and <code>5,000 concurrent requests</code></li>
-<li>If you exceed the limit, API Gateway will return <code>429, Too Many Requests</code></li>
-</ul>
+                        <h1 id="sqs-exam-tips-dev"><a class="header" href="#sqs-exam-tips-dev">SQS Exam Tips (dev)</a></h1>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../apigateway.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../sqs.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../sqs.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -217,13 +190,10 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../apigateway.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../sqs.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../sqs.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
             </nav>
 
         </div>
